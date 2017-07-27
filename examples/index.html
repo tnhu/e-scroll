@@ -1,0 +1,54 @@
+<style>
+  #infinite-list {
+  /* We need to limit the height and show a scrollbar */
+  width: 200px;
+  height: 300px;
+  overflow: auto;
+
+  /* Optional, only to check that it works with margin/padding */
+  margin: 30px;
+  padding: 20px;
+  border: 10px solid black;
+}
+
+/* Optional eye candy below: */
+li {
+  padding: 10px;
+  list-style-type: none;
+}
+li:hover {
+  background: #ccc;
+}
+</style>
+
+<ul id='infinite-list'>
+</ul>
+
+<script src="../index.js"></script>
+
+<script>
+
+const sleep = ms => new Promise(resolve => { setTimeout(resolve, ms) })
+var listElm = document.querySelector('#infinite-list');
+
+// Add 20 items.
+var nextItem = 1;
+var loadMore = function() {
+  for (var i = 0; i < 20; i++) {
+    var item = document.createElement('li');
+    item.innerText = 'Item ' + nextItem++;
+    listElm.appendChild(item);
+  }
+}
+
+loadMore()
+
+onScroll(listElm, async (e) => {
+  console.log('Fetching data...', e)
+  await sleep(1500)
+  loadMore()
+}, (progress) => {
+  console.log(progress)
+})
+
+</script>

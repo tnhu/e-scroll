@@ -1,0 +1,12 @@
+{
+  "name": "e-scroll",
+  "version": "1.0.0",
+  "description": "Scrolling event handler for DOM elements",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Tan Nhu",
+  "license": "MIT"
+}
