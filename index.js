@@ -1,4 +1,4 @@
-function onScroll(element, callback, progress = () => null) {
+function addHandler(element, callback, progress = () => null) {
   let onProgress = false
 
   if (element.onScrollHandler && element.onScrollHandler.callback === callback) {
@@ -29,7 +29,7 @@ function onScroll(element, callback, progress = () => null) {
   element.addEventListener('scroll', element.onScrollHandler)
 }
 
-function offScroll(element, callback) {
+function removeHandler(element, callback) {
   if (!element.onScrollHandler || element.onScrollHandler !== callback) {
     return
   }
@@ -41,6 +41,6 @@ function offScroll(element, callback) {
 }
 
 module.exports = {
-  onScroll,
-  offScroll
+  addHandler,
+  removeHandler
 }
